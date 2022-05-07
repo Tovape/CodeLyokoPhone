@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/app_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/ic_battery.xml" value="0.3828125" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/ic_phone.xml" value="0.3828125" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/mainButton.xml" value="0.22435897435897437" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/phone_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/activity_main.xml" value="0.4222222222222222" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
       </map>
     </option>
   </component>
