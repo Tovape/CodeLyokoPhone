@@ -14,42 +14,86 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity"
-        tools:layout_editor_absoluteX="-78dp"
-        tools:layout_editor_absoluteY="-114dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <!-- WireFrame -->
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/wireframe" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@color/fifthBlue" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@+id/view1"
+            android:layout_marginTop="0dp"
+            android:background="@color/firstBlue" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_below="@+id/view2"
+            android:background="@color/fifthBlue" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_below="@+id/view3"
+            android:background="@color/firstBlue" />
+
+
+
+
+        <!-- Input Number -->
 
         <EditText
             android:id="@+id/numberInput"
-            style="@style/Widget.Material3.AutoCompleteTextView.FilledBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="382dp"
+            android:layout_height="64dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginEnd="12dp"
-            android:color="@android:color/transparent"
-            android:background="@color/fifthBlue"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="430sp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
             android:maxLength="15"
-            android:textSize="20sp" />
+            android:scaleType="fitCenter"
+            android:textSize="20sp"
+            app:cornerRadius="0dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <!-- Buttons -->
 
         <ImageButton
-            android:id="@+id/button1"
-            android:layout_width="126dp"
-            android:layout_height="56dp"
+            android:id="@+id/buttonFwr"
+            android:layout_width="82dp"
+            android:layout_height="36dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="155dp"
-            android:background="@color/fifthBlue"
-            android:bottomLeftRadius="10dp"
-            android:bottomRightRadius="10dp"
-            android:src="@drawable/booster"
-            android:topLeftRadius="10dp"
-            android:topRightRadius="10dp" />
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="515dp"
+            android:background="@drawable/mainbutton"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/phoneleft"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 

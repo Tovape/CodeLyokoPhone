@@ -5,7 +5,8 @@
     <color name="firstWhite">#eeeeee</color>
     <color name="LogoWhite">#D4E3E0</color>
     <color name="firstGrey">#333333</color>
-    <color name="firstBlack">#111111</color>
+    <color name="secondBlack">#111111</color>
+    <color name="firstBlack">#000000</color>
 
     <!-- Gradients -->
     <color name="startGradient">#50778e</color>
@@ -25,5 +26,11 @@
     <color name="fourthYellow">#fbfcf7</color>
     <color name="fifthYellow">#93997f</color>
     <color name="sixthYellow">#D9DBCF</color>
+
+    <!-- Shadow -->
+    <!-- With 8 Digit Hex the first 2 numbers are for opacity, 11 = 11% | 99 = 99% -->
+    <color name="shadowBlue1">#113c6a8b</color>
+    <color name="shadowBlue2">#5529c8e5</color>
+    <color name="shadowBlack">#08000000</color>
 
 </resources>

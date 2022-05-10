@@ -5,24 +5,62 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.PorterDuff;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.TintableCompoundDrawablesView;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     // Request Permission for app
     private static final int REQUEST_CALL = 1;
 
     // Variables
+
+    // Number Input
     EditText numberInput;
-    ImageButton button1;
+
+    // Slide Options
+    ImageButton buttonFwr;
+    ImageButton buttonAsper;
+    ImageButton buttonDone;
+
+    // Top Options
+    ImageButton buttonCall;
+    ImageButton buttonHang;
+    ImageButton buttonClear;
+
+    // Bottom Options
+    ImageButton buttonCrew;
+    ImageButton buttonZero;
+    ImageButton buttonHastag;
+
+    // Numbers
+    ImageButton buttonOne;
+    ImageButton buttonTwo;
+    ImageButton buttonThree;
+    ImageButton buttonFour;
+    ImageButton buttonFive;
+    ImageButton buttonSix;
+    ImageButton buttonSeven;
+    ImageButton buttonEight;
+    ImageButton buttonNine;
 
     // Main Activity
     @Override
@@ -32,10 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Getting Variable Instances
         numberInput = (EditText)findViewById(R.id.numberInput);
-        button1 = (ImageButton)findViewById(R.id.button1);
+        buttonDone = (ImageButton)findViewById(R.id.buttonDone);
+
+        // Set Number Input as Number Field
+        numberInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
 
         // Performing action on button click
-        button1.setOnClickListener(new View.OnClickListener(){
+        buttonDone.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
