@@ -7,6 +7,8 @@
     <color name="firstGrey">#333333</color>
     <color name="secondBlack">#111111</color>
     <color name="firstBlack">#000000</color>
+    <color name="statusGreen">#317c3b</color>
+    <color name="statusRed">#AA0000</color>
 
     <!-- Gradients -->
     <color name="startGradient">#50778e</color>

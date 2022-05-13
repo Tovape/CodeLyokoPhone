@@ -5,27 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.TintableCompoundDrawablesView;
-
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     // Request Permission for app
@@ -43,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Top Options
     ImageButton buttonCall;
-    ImageButton buttonHang;
     ImageButton buttonClear;
+    ImageButton buttonHang;
 
     // Bottom Options
     ImageButton buttonCrew;
@@ -74,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set Number Input as Number Field
         numberInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+
+        // Enabling Read Only in numberInput
+        numberInput.setEnabled(false);
 
         // Performing action on button click
         buttonDone.setOnClickListener(new View.OnClickListener(){

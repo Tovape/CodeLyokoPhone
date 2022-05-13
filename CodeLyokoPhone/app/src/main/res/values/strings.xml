@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CodeLyokoPhone</string>
+    <integer name="mainPadding">12</integer>
+    <integer name="mainPaddingNegative">-12</integer>
+    <integer name="blackSeparator">3</integer>
+    <integer name="buttonPaddingSmall">4</integer>
+    <integer name="buttonPaddingMedium">6</integer>
+    <integer name="buttonPaddingBig">8</integer>
+    <integer name="buttonMargin">3</integer>
+    <float name="buttonHeight">33,2</float>
+    <item name="buttonHeight" type="dimen" format="float">33.2</item>
 </resources>
