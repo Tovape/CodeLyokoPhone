@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CodeLyokoPhone</string>
+    <string name="inputNumber"></string>
+    <dimen name="buttonPaddingSmall">4dp</dimen>
+    <dimen name="buttonPaddingMedium">6dp</dimen>
+    <dimen name="buttonPaddingBig">8dp</dimen>
+    <dimen name="buttonMargin">3dp</dimen>
+    <dimen name="layoutPadding">0.025</dimen>
+    <dimen name="blackSeparatorBig">0.005</dimen>
+    <dimen name="blackSeparatorSmall">0.0025</dimen>
+</resources>

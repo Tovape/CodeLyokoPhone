@@ -1,7 +1,6 @@
 package com.example.codelyokophone;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
