@@ -59,12 +59,12 @@
             android:background="@color/firstBlue"
             android:layout_weight="@dimen/layoutPadding"/>
 
-        <View
+        <ImageButton
             android:id="@+id/view4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@color/fourthBlue"
             android:orientation="horizontal"
+            android:background="@drawable/interactionbutton"
             android:layout_weight="0.26"/>
 
         <View
@@ -75,13 +75,13 @@
             android:orientation="horizontal"
             android:layout_weight="0.51"/>
 
-        <View
+        <ImageButton
             android:id="@+id/view6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@color/fourthBlue"
-            android:orientation="horizontal"
-            android:layout_weight="0.18"/>
+            android:layout_weight="0.18"
+            android:background="@drawable/interactionbutton"
+            android:orientation="horizontal" />
 
         <View
             android:id="@+id/view7"
@@ -136,13 +136,16 @@
             android:layout_weight="@dimen/layoutPadding"
             android:background="@color/firstBlue" />
 
-        <View
+        <ImageView
             android:id="@+id/view12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_weight="0.95"
-            android:background="@color/secondBlue" />
+            android:background="@color/secondBlue"
+            android:src="@drawable/antena"
+            android:scaleType="fitCenter"
+            android:paddingTop="@dimen/buttonPaddingMedium" />
 
         <View
             android:id="@+id/view13"
@@ -197,31 +200,294 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="1"
-        app:layout_constraintHeight_percent="0.16"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout2">
 
-        <View
-            android:id="@+id/view17"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="@dimen/layoutPadding"
-            android:background="@color/firstBlue" />
+            android:weightSum="1"
+            android:orientation="horizontal">
 
-        <View
-            android:id="@+id/view18"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="0.95"
-            android:background="@color/thirdBlue" />
+            <View
+                android:id="@+id/view55"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
 
-        <View
-            android:id="@+id/view19"
-            android:layout_width="0dp"
+            <View
+                android:id="@+id/view56"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.95"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view57"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout13"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintHeight_percent="0.033"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="@dimen/layoutPadding"
-            android:background="@color/firstBlue" />
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view61"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+            <View
+                android:id="@+id/view90"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view62"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view91"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.031"
+                android:background="@color/thirdBlue" />
+
+            <ImageView
+                android:id="@+id/view92"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:src="@drawable/strokequality"/>
+
+            <View
+                android:id="@+id/view93"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view63"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout15"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintHeight_percent="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view100"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+            <View
+                android:id="@+id/view101"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view102"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view103"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.031"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view104"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view105"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view106"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout14"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintHeight_percent="0.033"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout15">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/view110"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="@dimen/layoutPadding"
+                    android:background="@color/firstBlue" />
+
+                <View
+                    android:id="@+id/view111"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="@dimen/layoutPadding"
+                    android:background="@color/thirdBlue" />
+
+                <View
+                    android:id="@+id/view112"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.435"
+                    android:background="@color/thirdBlue" />
+
+                <View
+                    android:id="@+id/view113"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.031"
+                    android:background="@color/thirdBlue" />
+
+                <View
+                    android:id="@+id/view114"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.435"
+                    android:background="@color/thirdBlue" />
+
+                <View
+                    android:id="@+id/view115"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="@dimen/layoutPadding"
+                    android:background="@color/thirdBlue" />
+
+                <View
+                    android:id="@+id/view116"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="@dimen/layoutPadding"
+                    android:background="@color/firstBlue" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout12"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintHeight_percent="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout14">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view58"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+            <View
+                android:id="@+id/view59"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.95"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view60"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/firstBlue" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -235,7 +501,7 @@
         android:weightSum="1"
         app:layout_constraintHeight_percent="@dimen/blackSeparatorSmall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearlayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout12">
 
         <View
             android:id="@+id/view20"
@@ -279,12 +545,15 @@
             android:layout_weight="@dimen/layoutPadding"
             android:background="@color/firstBlue" />
 
-        <View
+        <ImageView
             android:id="@+id/view24"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.22"
-            android:background="@color/thirdBlue" />
+            android:background="@color/thirdBlue"
+            android:src="@drawable/signal"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/buttonPaddingSmall" />
 
         <View
             android:id="@+id/view25"
@@ -293,12 +562,15 @@
             android:layout_weight="@dimen/blackSeparatorBig"
             android:background="@color/secondBlack" />
 
-        <View
+        <ImageView
             android:id="@+id/view26"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.50"
-            android:background="@color/thirdBlue" />
+            android:background="@color/thirdBlue"
+            android:src="@drawable/mail"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/buttonPaddingSmall" />
 
         <View
             android:id="@+id/view27"
@@ -307,12 +579,15 @@
             android:layout_weight="@dimen/blackSeparatorBig"
             android:background="@color/secondBlack" />
 
-        <View
+        <ImageView
             android:id="@+id/view28"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.22"
-            android:background="@color/thirdBlue" />
+            android:background="@color/thirdBlue"
+            android:src="@drawable/battery"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/buttonPaddingSmall" />
 
         <View
             android:id="@+id/view29"
@@ -380,15 +655,18 @@
 
         <EditText
             android:id="@+id/numberInput"
+            android:paddingLeft="@dimen/buttonPaddingBig"
+            android:paddingRight="@dimen/buttonPaddingBig"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.95"
             android:autofillHints="phone"
             android:background="@color/secondBlue"
+            android:textColor="@color/firstWhite"
             android:hint="@string/inputNumber"
             android:inputType="phone"
             android:maxLength="15"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:cornerRadius="0dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -442,9 +720,9 @@
         android:id="@+id/numberControl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.28"
         android:orientation="horizontal"
         android:weightSum="1"
+        app:layout_constraintHeight_percent="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout8">
 
@@ -466,8 +744,8 @@
                 android:id="@+id/buttonFwr"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.20"
                 android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="0.20"
                 android:background="@drawable/mainbutton"
                 android:padding="@dimen/buttonPaddingBig"
                 android:scaleType="fitCenter"
@@ -477,23 +755,23 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.20"
                 android:layout_margin="@dimen/buttonMargin"
-                android:visibility="invisible"/>
+                android:layout_weight="0.20"
+                android:visibility="invisible" />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.20"
                 android:layout_margin="@dimen/buttonMargin"
-                android:visibility="invisible"/>
+                android:layout_weight="0.20"
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/buttonAsper"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.20"
                 android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="0.20"
                 android:background="@drawable/mainbutton"
                 android:padding="@dimen/buttonPaddingMedium"
                 android:scaleType="fitCenter"
@@ -504,8 +782,8 @@
                 android:id="@+id/buttonDone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.20"
                 android:layout_margin="@dimen/buttonMargin"
+                android:layout_weight="0.20"
                 android:background="@drawable/mainbutton"
                 android:padding="@dimen/buttonPaddingMedium"
                 android:scaleType="fitCenter"
@@ -524,7 +802,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.70"
+            android:layout_weight="0.695"
             android:background="@color/secondBlue"
             android:orientation="horizontal">
 
@@ -538,8 +816,8 @@
                     android:id="@+id/buttonCall"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingBig"
                     android:scaleType="fitCenter"
@@ -550,8 +828,8 @@
                     android:id="@+id/buttonOne"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -562,8 +840,8 @@
                     android:id="@+id/buttonFour"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -574,8 +852,8 @@
                     android:id="@+id/buttonSeven"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -586,8 +864,8 @@
                     android:id="@+id/buttonCrew"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -607,8 +885,8 @@
                     android:id="@+id/buttonClear"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -619,8 +897,8 @@
                     android:id="@+id/buttonTwo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -631,8 +909,8 @@
                     android:id="@+id/buttonFive"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -643,8 +921,8 @@
                     android:id="@+id/buttonEight"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -655,8 +933,8 @@
                     android:id="@+id/buttonZero"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -675,8 +953,8 @@
                     android:id="@+id/buttonHang"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingBig"
                     android:scaleType="fitCenter"
@@ -687,8 +965,8 @@
                     android:id="@+id/buttonThree"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -699,8 +977,8 @@
                     android:id="@+id/buttonSix"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -711,8 +989,8 @@
                     android:id="@+id/buttonNine"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"
@@ -723,8 +1001,8 @@
                     android:id="@+id/buttonHastag"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.20"
                     android:layout_margin="@dimen/buttonMargin"
+                    android:layout_weight="0.20"
                     android:background="@drawable/mainbutton"
                     android:padding="@dimen/buttonPaddingSmall"
                     android:scaleType="fitCenter"

@@ -20,6 +20,7 @@
     <color name="thirdBlue">#75e3f0</color>
     <color name="fourthBlue">#3b698a</color>
     <color name="fifthBlue">#749cb5</color>
+    <color name="sixthBlue">#4d91a4</color>
 
     <!-- Yellow -->
     <color name="firstYellow">#ded29e</color>
@@ -34,5 +35,6 @@
     <color name="shadowBlue1">#113c6a8b</color>
     <color name="shadowBlue2">#5529c8e5</color>
     <color name="shadowBlack">#08000000</color>
+    <color name="shadowBlue3">#083b698a</color>
 
 </resources>
