@@ -9,6 +9,8 @@ When you install the app it will probably tell you it's unsafe witch is not true
 
 Android 6 Compatible:
 Run on Samsung Galaxy Note Edge, Nexus 5 & Motorola E3
+Android 11 COmpatible:
+Run on Xiaomi MI11 5G
 ![image](https://user-images.githubusercontent.com/49490716/168580287-936476f3-c655-46ec-9451-9e3fc811e0ba.png)
 
 Issues:
