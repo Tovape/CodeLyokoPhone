@@ -41,7 +41,7 @@
     <item>
         <shape android:shape="oval">
             <padding android:top="1px" android:right="1px" android:bottom="1px" android:left="1px" />
-            <solid android:color="@color/shadowBlack" />
+            <solid android:color="#88eeeeee" />
             <corners android:radius="3dp" />
         </shape>
     </item>
@@ -59,8 +59,8 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="oval">
             <padding android:top="1px" android:right="1px" android:bottom="1px" android:left="1px" />
-            <stroke android:width="1px" android:color="@color/shadowBlue2" />
-            <solid android:color="#99eeeeee"/>
+            <stroke android:width="1px" android:color="@color/shadowBlack" />
+            <solid android:color="#00eeeeee"/>
             <size android:width="100dp"
                 android:height="24dp"/>
         </shape>
@@ -208,4 +208,5 @@
             <corners android:radius="3dp" />
         </shape>
     </item>
+
 </layer-list>

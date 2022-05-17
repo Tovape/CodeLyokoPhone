@@ -140,12 +140,10 @@
             android:id="@+id/view12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
             android:layout_weight="0.95"
-            android:background="@color/secondBlue"
-            android:src="@drawable/antena"
-            android:scaleType="fitCenter"
-            android:paddingTop="@dimen/buttonPaddingMedium" />
+            android:scaleType="fitXY"
+            android:src="@drawable/antenastyled" />
 
         <View
             android:id="@+id/view13"
@@ -265,12 +263,15 @@
                 android:layout_weight="@dimen/layoutPadding"
                 android:background="@color/thirdBlue" />
 
-            <View
-                android:id="@+id/view62"
+            <ProgressBar
+                android:id="@+id/downloadRate"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.435"
-                android:background="@color/thirdBlue" />
+                android:progressDrawable="@drawable/phonequalityprogress"
+                android:progress="0"
+                android:max="100" />
 
             <View
                 android:id="@+id/view91"
@@ -284,7 +285,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.435"
-                android:src="@drawable/strokequality"/>
+                android:src="@drawable/phonequalitymiddle"/>
 
             <View
                 android:id="@+id/view93"
@@ -334,12 +335,16 @@
                 android:layout_weight="@dimen/layoutPadding"
                 android:background="@color/thirdBlue" />
 
-            <View
-                android:id="@+id/view102"
+            <EditText
+                android:id="@+id/downloadSpeed"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.435"
-                android:background="@color/thirdBlue" />
+                android:background="@color/thirdBlue"
+                android:gravity="top|left"
+                android:textColor="@color/firstBlack"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck"/>
 
             <View
                 android:id="@+id/view103"
@@ -348,12 +353,12 @@
                 android:layout_weight="0.031"
                 android:background="@color/thirdBlue" />
 
-            <View
+            <ImageView
                 android:id="@+id/view104"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.435"
-                android:background="@color/thirdBlue" />
+                android:src="@drawable/phonequalitymiddle" />
 
             <View
                 android:id="@+id/view105"
@@ -409,12 +414,15 @@
                     android:layout_weight="@dimen/layoutPadding"
                     android:background="@color/thirdBlue" />
 
-                <View
-                    android:id="@+id/view112"
+                <ProgressBar
+                    android:id="@+id/uploadRate"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.435"
-                    android:background="@color/thirdBlue" />
+                    android:progressDrawable="@drawable/phonequalityprogress"
+                    android:progress="0"
+                    android:max="100" />
 
                 <View
                     android:id="@+id/view113"
@@ -423,12 +431,12 @@
                     android:layout_weight="0.031"
                     android:background="@color/thirdBlue" />
 
-                <View
+                <ImageView
                     android:id="@+id/view114"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.435"
-                    android:background="@color/thirdBlue" />
+                    android:src="@drawable/phonequalitymiddle"/>
 
                 <View
                     android:id="@+id/view115"
@@ -460,6 +468,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout14">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -467,27 +476,60 @@
             android:orientation="horizontal">
 
             <View
-                android:id="@+id/view58"
+                android:id="@+id/view120"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="@dimen/layoutPadding"
                 android:background="@color/firstBlue" />
 
             <View
-                android:id="@+id/view59"
+                android:id="@+id/view121"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.95"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <EditText
+                android:id="@+id/uploadSpeed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:background="@color/thirdBlue"
+                android:gravity="top|left"
+                android:textColor="@color/firstBlack"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:id="@+id/view123"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.031"
                 android:background="@color/thirdBlue" />
 
             <View
-                android:id="@+id/view60"
+                android:id="@+id/view124"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.435"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view125"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="@dimen/layoutPadding"
+                android:background="@color/thirdBlue" />
+
+            <View
+                android:id="@+id/view126"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="@dimen/layoutPadding"
                 android:background="@color/firstBlue" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 
@@ -655,18 +697,20 @@
 
         <EditText
             android:id="@+id/numberInput"
-            android:paddingLeft="@dimen/buttonPaddingBig"
-            android:paddingRight="@dimen/buttonPaddingBig"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.95"
             android:autofillHints="phone"
-            android:background="@color/secondBlue"
-            android:textColor="@color/firstWhite"
-            android:hint="@string/inputNumber"
+            android:background="@drawable/numberinputstyled"
+            android:hint=""
             android:inputType="phone"
             android:maxLength="15"
-            android:textSize="24sp"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/buttonPaddingBig"
+            android:paddingRight="@dimen/buttonPaddingBig"
+            android:singleLine="true"
+            android:textColor="@color/firstWhite"
+            android:textSize="34sp"
             app:cornerRadius="0dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -722,6 +766,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="1"
+        android:background="@drawable/numberselectorstyled"
         app:layout_constraintHeight_percent="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout8">
@@ -737,7 +782,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:background="@color/secondBlue"
             android:orientation="vertical">
 
             <ImageButton
@@ -803,7 +847,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.695"
-            android:background="@color/secondBlue"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -1174,12 +1217,11 @@
             android:layout_weight="@dimen/layoutPadding"
             android:background="@color/firstBlue" />
 
-        <View
-            android:id="@+id/view52"
+        <ImageView
+            android:id="@+id/footer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.95"
-            android:background="@color/secondBlue" />
+            android:layout_weight="0.95"/>
 
         <View
             android:id="@+id/view53"
