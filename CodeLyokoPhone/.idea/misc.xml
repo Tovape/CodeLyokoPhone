@@ -7,6 +7,8 @@
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/animation.xml" value="0.35462962962962963" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/antenastyled.xml" value="0.3828125" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/app_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/contactitle.xml" value="0.40572916666666664" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/contacts_list_item.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/example.xml" value="0.67" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/footeranimation.xml" value="0.40572916666666664" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/footeranimation1.xml" value="0.40572916666666664" />
@@ -29,8 +31,12 @@
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/phonequalitymiddle.xml" value="0.3828125" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/phonequalityprogress.xml" value="0.3828125" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/phonequalitytop.xml" value="0.67" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/searchbox.xml" value="0.40572916666666664" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/strokequality.xml" value="0.35462962962962963" />
-        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/activity_main.xml" value="0.3570843570843571" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/drawable/titlebox.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/activity_contact_list.xml" value="0.33" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/layout/contacts_list_item.xml" value="0.19375" />
         <entry key="..\:/Users/toniv/AndroidStudioProjects/CodeLyokoPhone/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
       </map>
     </option>

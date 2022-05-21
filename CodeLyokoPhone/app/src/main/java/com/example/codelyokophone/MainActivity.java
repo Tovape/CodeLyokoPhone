@@ -25,13 +25,16 @@ import androidx.core.content.ContextCompat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import android.provider.ContactsContract;
 
 public class MainActivity extends AppCompatActivity {
 
     // Request Permission for app
     private static final int REQUEST_CALL = 1;
-    private int delayIncrement = 140;
+    private static final int REQUEST_CONTACTS = 1;
+
     // Other
+    private int delayIncrement = 140;
     private ScheduledExecutorService scheduleTaskExecutor;
     Context context = this;
 
@@ -170,6 +173,10 @@ public class MainActivity extends AppCompatActivity {
             }, delayer);
         }
     }
+    public void openContactList() {
+        Intent contactIntent = new Intent(this, ContactList.class);
+        startActivity(contactIntent);
+    }
 
     // Variables
 
@@ -212,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Getting Variable Instances
         numberInput = (EditText) findViewById(R.id.numberInput);
+        buttonFwr = (ImageButton) findViewById(R.id.buttonFwr);
         buttonCall = (ImageButton) findViewById(R.id.buttonCall);
         buttonZero = (ImageButton) findViewById(R.id.buttonZero);
         buttonOne = (ImageButton) findViewById(R.id.buttonOne);
@@ -232,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar uploadRate = (ProgressBar) findViewById(R.id.uploadRate);
 
         // Set Footer Animation
-
         AnimationDrawable footerAnimation;
         footer.setBackgroundResource(R.drawable.footeranimation);
         footerAnimation = (AnimationDrawable) footer.getBackground();
@@ -333,6 +340,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Open Contacts List
+
+        buttonFwr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openContactList();
+            }
+        });
+
         // Internet Status
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkCapabilities nc = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
@@ -414,8 +430,10 @@ public class MainActivity extends AppCompatActivity {
                         }, delayer);
                     }
 
-                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_CONTACTS);
                 } else {
                     // Make Phone Call
                     Handler handlerCall = new Handler();

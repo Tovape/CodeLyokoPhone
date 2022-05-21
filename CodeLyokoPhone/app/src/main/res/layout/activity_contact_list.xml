@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context=".ContactList">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@color/fifthBlue" />
+
+        <LinearLayout
+            android:id="@+id/titlebarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/view1"
+            android:background="@drawable/titlebox">
+
+            <ImageButton
+                android:id="@+id/Goback"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.16"
+                android:background="#00000000"
+                android:padding="@dimen/buttonPaddingBig"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back" />
+
+            <EditText
+                android:id="@+id/Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.68"
+                android:background="#00000000"
+                android:hint="Contacts"
+                android:paddingLeft="@dimen/buttonPaddingBig"
+                android:paddingRight="@dimen/buttonPaddingBig"
+                android:textColor="@color/secondBlack"
+                android:textSize="28sp"
+                app:cornerRadius="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.16"
+                android:padding="@dimen/buttonPaddingBig"
+                android:scaleType="fitCenter"
+                android:src="@drawable/contact" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/searchboxlayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/titlebarlayout"
+            android:background="@drawable/searchbox">
+
+            <EditText
+                android:id="@+id/SearchBox"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.84"
+                android:background="#00000000"
+                android:hint="Search"
+                android:paddingLeft="20dp"
+                android:paddingRight="@dimen/buttonPaddingBig"
+                android:textColor="@color/secondBlack"
+                android:textSize="24sp"
+                app:cornerRadius="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.16"
+                android:padding="14dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search" />
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="410dp"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/searchboxlayout"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
