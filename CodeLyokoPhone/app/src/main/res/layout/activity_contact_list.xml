@@ -10,6 +10,7 @@
     tools:context=".ContactList">
 
     <RelativeLayout
+        android:id="@+id/contactlistcontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -94,9 +95,10 @@
         </LinearLayout>
 
         <ListView
+            android:id="@+id/contactlist"
             android:layout_width="410dp"
             android:layout_height="fill_parent"
-            android:layout_below="@+id/searchboxlayout"/>
+            android:layout_below="@+id/searchboxlayout" />
 
     </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.example.codelyokophone;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CONTACTS = 1;
 
     // Other
+    String numberSelected;
     private int delayIncrement = 140;
     private ScheduledExecutorService scheduleTaskExecutor;
     Context context = this;
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openContactList() {
         Intent contactIntent = new Intent(this, ContactList.class);
-        startActivity(contactIntent);
+        startActivityForResult(contactIntent, 1);
     }
 
     // Variables
@@ -452,6 +454,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Get Phone Number From Contact List
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("result");
+                Log.d("LOGCAT", "Got back: " + result);
+                result = result.replaceAll("-", "");
+                result = result.replaceAll("[(]", "");
+                result = result.replaceAll("[)]", "");
+                result = result.replaceAll(" ", "");
+                Log.d("LOGCAT", "Formated for Call: " + result);
+                numberInput.setText(result);
+                buttonCall.performClick();
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                Log.d("LOGCAT", "No Contacts Selected");
+            }
+        }
+    }
+
 }
 
 
