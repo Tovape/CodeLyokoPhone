@@ -3,6 +3,7 @@ package com.example.codelyokophone;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -37,6 +39,7 @@ public class ContactList extends AppCompatActivity {
     private static final int REQUEST_WRITE_CONTACTS = 1;
 
     // Variables
+    LinearLayout contactEntry;
     String numberSelected;
     EditText Title;
     EditText SearchBox;
@@ -45,6 +48,7 @@ public class ContactList extends AppCompatActivity {
     ArrayList ContactArraylist = new ArrayList();
     ContactArray[] contactarray = new ContactArray[1000];
     private int contactCount = 0;
+    String SearchBoxFilter;
 
     // Other
     Context context = this;
@@ -63,7 +67,6 @@ public class ContactList extends AppCompatActivity {
             contactarray[contactCount] = new ContactArray(user, phone);
             ContactArraylist.add(contactarray[contactCount]);
             Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
-
             contactCount++;
         }
 
@@ -122,6 +125,7 @@ public class ContactList extends AppCompatActivity {
         }
 
         // Load List of Contacts
+
         CustomAdapter customAdapter = new CustomAdapter();
         contactlist.setAdapter(customAdapter);
 
@@ -137,7 +141,9 @@ public class ContactList extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Action Here
+                SearchBoxFilter = SearchBox.getText().toString();
+                CustomAdapterFilter customAdapterfilter = new CustomAdapterFilter();
+                contactlist.setAdapter(customAdapterfilter);
             }
         });
     }
@@ -185,6 +191,10 @@ public class ContactList extends AppCompatActivity {
                 public void onClick(View v) {
                     numberSelected = contactarray[i].getPhone();
                     Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
+
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("result",numberSelected);
+                    setResult(Activity.RESULT_OK,returnIntent);
                     finish();
                 }
             });
@@ -192,4 +202,62 @@ public class ContactList extends AppCompatActivity {
             return view;
         }
     }
+
+    class CustomAdapterFilter extends BaseAdapter {
+
+        @Override
+        public int getCount() { return contactCount; }
+
+        @Override
+        public Object getItem(int position) { return null; }
+
+        @Override
+        public long getItemId(int position) { return 0; }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewgroup) {
+            view = getLayoutInflater().inflate(R.layout.contacts_list_item, null);
+            contactEntry = (LinearLayout) view.findViewById(R.id.contactEntry);
+
+            Button contactname = (Button) view.findViewById(R.id.contactname);
+            Button contactphone = (Button) view.findViewById(R.id.contactphone);
+
+            contactname.setText(contactarray[i].getNameFiltered(SearchBoxFilter));
+            contactphone.setText(contactarray[i].getPhoneFiltered(SearchBoxFilter));
+
+            if (contactarray[i].getNameFiltered(SearchBoxFilter).equals("")) {
+                contactEntry.setVisibility(View.GONE);
+            }
+
+            contactname.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    numberSelected = contactarray[i].getPhone();
+                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
+
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("result",numberSelected);
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
+
+                }
+            });
+
+            contactphone.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    numberSelected = contactarray[i].getPhone();
+                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
+
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("result",numberSelected);
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
+                }
+            });
+
+            return view;
+        }
+    }
+
 }

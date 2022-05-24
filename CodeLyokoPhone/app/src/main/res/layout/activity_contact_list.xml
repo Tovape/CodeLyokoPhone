@@ -81,6 +81,7 @@
                 android:paddingRight="@dimen/buttonPaddingBig"
                 android:textColor="@color/secondBlack"
                 android:textSize="24sp"
+                android:maxLines="1"
                 app:cornerRadius="0dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 

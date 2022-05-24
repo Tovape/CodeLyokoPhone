@@ -20,6 +20,23 @@ public class ContactArray {
         return phone;
     }
 
+    // Filtered
+    public String getNameFiltered(String filter) {
+        if (name.matches(".*" + filter + ".*")) {
+            return name;
+        } else {
+            return "";
+        }
+    }
+
+    public String getPhoneFiltered(String filter) {
+        if (name.matches(".*" + filter + ".*")) {
+            return phone;
+        } else {
+            return "";
+        }
+    }
+
     // Tostring
     @Override
     public String toString() {
