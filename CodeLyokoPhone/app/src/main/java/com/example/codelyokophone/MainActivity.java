@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Request Permission for app
     private static final int REQUEST_CALL = 1;
-    private static final int REQUEST_CONTACTS = 1;
+    private static final int REQUEST_READ_CONTACTS = 1;
+    private static final int REQUEST_WRITE_CONTACTS = 1;
 
     // Other
     String numberSelected;
@@ -399,11 +400,11 @@ public class MainActivity extends AppCompatActivity {
                 // Animation Before Call
 
                 String stringNumber = numberInput.getText().toString();
-                int intNumber = Integer.parseInt(stringNumber);
+                long intNumber = Long.parseLong(stringNumber);
                 int numberLength = stringNumber.length();
-                int[] digitGetter = new int[15];
+                int[] digitGetter = new int[16];
 
-                Log.i("LOGCAT intNumber: ", Integer.toString(intNumber));
+                Log.i("LOGCAT intNumber: ", Long.toString(intNumber));
                 Log.i("LOGCAT numberLength: ", Integer.toString(numberLength));
 
                 int delayer = 0;
@@ -413,7 +414,7 @@ public class MainActivity extends AppCompatActivity {
                     Handler handlerAnimation = new Handler();
 
                     for (int i = 0; i < numberLength; i++) {
-                        digitGetter[i] = Integer.parseInt(Integer.toString(intNumber).substring(i, i+1));
+                        digitGetter[i] = Integer.parseInt(Long.toString(intNumber).substring(i, i+1));
                         delayer = delayer + delayIncrement;
                         PerformAnimation(digitGetter, i, delayer, handlerAnimation, delayIncrement);
                     }
@@ -433,9 +434,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ||
-                        ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                        ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_CONTACTS);
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACTS);
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.WRITE_CONTACTS}, REQUEST_WRITE_CONTACTS);
                 } else {
                     // Make Phone Call
                     Handler handlerCall = new Handler();
@@ -443,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             if (stringNumber.trim().length() > 0) {
                                 footerAnimation.stop();
-                                callIntent.setData(Uri.parse("tel:"+stringNumber));
+                                callIntent.setData(Uri.parse("tel:"+"+"+stringNumber));
                                 startActivity(callIntent);
                             } else {
 
@@ -459,7 +462,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 String result = data.getStringExtra("result");
@@ -468,6 +470,7 @@ public class MainActivity extends AppCompatActivity {
                 result = result.replaceAll("[(]", "");
                 result = result.replaceAll("[)]", "");
                 result = result.replaceAll(" ", "");
+                result = result.replaceAll("[+]", "");
                 Log.d("LOGCAT", "Formated for Call: " + result);
                 numberInput.setText(result);
                 buttonCall.performClick();

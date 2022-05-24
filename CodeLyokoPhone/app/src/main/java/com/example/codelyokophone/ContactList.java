@@ -5,20 +5,20 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -26,19 +26,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ContactList extends AppCompatActivity {
 
     // Request Permission for app
     private static final int REQUEST_CALL = 1;
-    private static final int REQUEST_CONTACTS = 1;
+    private static final int REQUEST_READ_CONTACTS = 1;
+    private static final int REQUEST_WRITE_CONTACTS = 1;
 
     // Variables
     String numberSelected;
@@ -47,7 +43,7 @@ public class ContactList extends AppCompatActivity {
     ImageButton Goback;
     ListView contactlist;
     ArrayList ContactArraylist = new ArrayList();
-    ContactArray[] contactarray = new ContactArray[100];
+    ContactArray[] contactarray = new ContactArray[1000];
     private int contactCount = 0;
 
     // Other
@@ -57,13 +53,30 @@ public class ContactList extends AppCompatActivity {
     public void getContactList() {
         contactCount = 0;
         Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+        Uri simUri = Uri.parse("content://icc/adn");
+        Cursor cursorSim = this.getContentResolver().query(simUri, null, null,null, null);
+
+        // Get Normal Contacts
         while (phones.moveToNext()) {
             String user = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String phone = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
             contactarray[contactCount] = new ContactArray(user, phone);
             ContactArraylist.add(contactarray[contactCount]);
+            Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
+
             contactCount++;
         }
+
+        // Get Sim Contacts
+        while (cursorSim.moveToNext()) {
+            String user = cursorSim.getString(cursorSim.getColumnIndexOrThrow("name"));
+            String phone = cursorSim.getString(cursorSim.getColumnIndexOrThrow("number"));
+            Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
+            contactarray[contactCount] = new ContactArray(user, phone);
+            ContactArraylist.add(contactarray[contactCount]);
+            contactCount++;
+        }
+
         phones.close();
     }
 
@@ -99,9 +112,11 @@ public class ContactList extends AppCompatActivity {
 
         // Load Contacts
         if (ContextCompat.checkSelfPermission(ContactList.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(ContactList.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(ContactList.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(ContactList.this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(ContactList.this, new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            ActivityCompat.requestPermissions(ContactList.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_CONTACTS);
+            ActivityCompat.requestPermissions(ContactList.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACTS);
+            ActivityCompat.requestPermissions(ContactList.this, new String[] {Manifest.permission.READ_CONTACTS}, REQUEST_WRITE_CONTACTS);
         } else {
             getContactList();
         }
@@ -109,9 +124,6 @@ public class ContactList extends AppCompatActivity {
         // Load List of Contacts
         CustomAdapter customAdapter = new CustomAdapter();
         contactlist.setAdapter(customAdapter);
-
-        // Load Phone from List of Contacts
-
 
         // Filtering
         SearchBox.addTextChangedListener(new TextWatcher() {
