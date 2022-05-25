@@ -622,12 +622,11 @@
             android:background="@color/secondBlack" />
 
         <ImageView
-            android:id="@+id/view28"
+            android:id="@+id/BatteryIndicator"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.22"
             android:background="@color/thirdBlue"
-            android:src="@drawable/battery"
             android:scaleType="fitCenter"
             android:padding="@dimen/buttonPaddingSmall" />
 

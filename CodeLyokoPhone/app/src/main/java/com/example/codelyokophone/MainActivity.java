@@ -3,14 +3,17 @@ package com.example.codelyokophone;
 import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
@@ -26,7 +29,6 @@ import androidx.core.content.ContextCompat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import android.provider.ContactsContract;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -180,8 +182,41 @@ public class MainActivity extends AppCompatActivity {
         Intent contactIntent = new Intent(this, ContactList.class);
         startActivityForResult(contactIntent, 1);
     }
+    public BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context ctxt, Intent intent) {
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+            float batteryPct = level * 100 / (float)scale;
+            int batteryInt = Math.round(batteryPct);
+            Log.d("LOGCAT", String.valueOf(batteryInt));
+
+            if (batteryInt > 75) {
+                BatteryIndicator.setImageDrawable(getResources().getDrawable(R.drawable.battery100dr));
+            } else if (batteryInt <= 75 && batteryInt > 50) {
+                BatteryIndicator.setImageDrawable(getResources().getDrawable(R.drawable.battery75dr));
+            } else if (batteryInt <= 50 && batteryInt > 25) {
+                BatteryIndicator.setImageDrawable(getResources().getDrawable(R.drawable.battery50dr));
+            } else if (batteryInt <= 25 && batteryInt > 0) {
+                BatteryIndicator.setImageDrawable(getResources().getDrawable(R.drawable.battery25dr));
+                statusTwo.setBackgroundColor(getResources().getColor(R.color.statusRed));
+            } else if (batteryInt == 0) {
+                BatteryIndicator.setImageDrawable(getResources().getDrawable(R.drawable.battery0dr));
+                statusTwo.setBackgroundColor(getResources().getColor(R.color.statusRed));
+            }
+
+        }
+    };
 
     // Variables
+
+    // Views
+    View statusOne;
+    View statusTwo;
+    View statusThree;
+
+    // ImageViews
+    ImageView BatteryIndicator;
 
     // EditText
     EditText numberInput;
@@ -238,6 +273,11 @@ public class MainActivity extends AppCompatActivity {
         buttonCrew = (ImageButton) findViewById(R.id.buttonCrew);
         downloadSpeed = (EditText) findViewById(R.id.downloadSpeed);
         uploadSpeed = (EditText) findViewById(R.id.uploadSpeed);
+        statusOne = (View) findViewById(R.id.statusOne);
+        statusTwo = (View) findViewById(R.id.statusTwo);
+        statusThree = (View) findViewById(R.id.statusThree);
+        BatteryIndicator = (ImageView)findViewById(R.id.BatteryIndicator);
+
         ImageView footer = (ImageView) findViewById(R.id.footer);
         ProgressBar downloadRate = (ProgressBar) findViewById(R.id.downloadRate);
         ProgressBar uploadRate = (ProgressBar) findViewById(R.id.uploadRate);
@@ -265,7 +305,6 @@ public class MainActivity extends AppCompatActivity {
         uploadSpeed.setEnabled(false);
 
         // Button Actions
-
         buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -344,7 +383,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Open Contacts List
-
         buttonFwr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -355,35 +393,48 @@ public class MainActivity extends AppCompatActivity {
         // Internet Status
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkCapabilities nc = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
-        scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
-        scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
-            public void run() {
 
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        int downSpeed = nc.getLinkDownstreamBandwidthKbps() / 1024;
-                        int upSpeed = nc.getLinkUpstreamBandwidthKbps() / 1024;
-                        downloadSpeed.setText(Integer.toString(downSpeed) + "MB/SEC");
-                        uploadSpeed.setText(Integer.toString(upSpeed) + "MB/SEC");
+        if (nc != null) {
+            Log.d("LOGCAT", "Connected");
+            scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
+            scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
+                public void run() {
 
-                        if (downSpeed >= 100) {
-                            downloadRate.setProgress(100);
-                        } else {
-                            downloadRate.setProgress(downSpeed);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            int downSpeed = nc.getLinkDownstreamBandwidthKbps() / 1024;
+                            int upSpeed = nc.getLinkUpstreamBandwidthKbps() / 1024;
+                            downloadSpeed.setText(Integer.toString(downSpeed) + " MB/SEC");
+                            uploadSpeed.setText(Integer.toString(upSpeed) + " MB/SEC");
+
+                            if (downSpeed >= 100) {
+                                downloadRate.setProgress(100);
+                            } else {
+                                downloadRate.setProgress(downSpeed);
+                            }
+
+                            if (upSpeed >= 100) {
+                                uploadRate.setProgress(100);
+                            } else {
+                                uploadRate.setProgress(upSpeed);
+                            }
                         }
+                    });
+                }
+            }, 0, 5, TimeUnit.SECONDS);
 
-                        if (upSpeed >= 100) {
-                            uploadRate.setProgress(100);
-                        } else {
-                            uploadRate.setProgress(upSpeed);
-                        }
+        } else {
+            Log.d("LOGCAT", "No Connection!");
+            downloadRate.setProgress(0);
+            uploadRate.setProgress(0);
+            downloadSpeed.setText("0 MB/SEC");
+            uploadSpeed.setText("0 MB/SEC");
+            statusOne.setBackgroundColor(getResources().getColor(R.color.statusRed));
+        }
 
-                        //Log.i("LOGCAT downSpeed: \n", Integer.toString(downSpeed));
-                        //Log.i("LOGCAT upSpeed: \n", Integer.toString(upSpeed));
-                    }
-                });
-            }
-        }, 0, 5, TimeUnit.SECONDS);
+        // Get Battery Level
+        this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
         // Call Activity
         Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -394,11 +445,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // Call in Progress Status
+                statusThree.setBackgroundColor(getResources().getColor(R.color.statusGreen));
+
                 // Footer Animation
                 footerAnimation.start();
 
                 // Animation Before Call
-
                 String stringNumber = numberInput.getText().toString();
                 long intNumber = Long.parseLong(stringNumber);
                 int numberLength = stringNumber.length();
@@ -451,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
                             } else {
 
                             }
+                            statusThree.setBackgroundColor(getResources().getColor(R.color.firstWhite));
                         }
                     }, delayer);
                 }
