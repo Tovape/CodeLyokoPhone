@@ -17,5 +17,4 @@ Run on Xiaomi MI11 5G
 
 ![image](https://user-images.githubusercontent.com/49490716/168580287-936476f3-c655-46ec-9451-9e3fc811e0ba.png)
 
-Issues:
-Crashes when performing call
+
