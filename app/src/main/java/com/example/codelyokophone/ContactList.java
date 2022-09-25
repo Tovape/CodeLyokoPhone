@@ -3,12 +3,12 @@ package com.example.codelyokophone;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.app.Activity;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,6 +30,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ContactList extends AppCompatActivity {
 
@@ -44,13 +45,15 @@ public class ContactList extends AppCompatActivity {
     EditText Title;
     EditText SearchBox;
     ImageButton Goback;
-    ListView contactlist;
+    RecyclerView contactlist;
     ArrayList ContactArraylist = new ArrayList();
     ContactArray[] contactarray = new ContactArray[1000];
     private int contactCount = 0;
     String SearchBoxFilter;
+    private ContactViewModel contactViewModel;
 
     // Other
+    Activity activity = this;
     Context context = this;
 
     // Methods
@@ -60,24 +63,35 @@ public class ContactList extends AppCompatActivity {
         Uri simUri = Uri.parse("content://icc/adn");
         Cursor cursorSim = this.getContentResolver().query(simUri, null, null,null, null);
 
+        ArrayList checker = new ArrayList();
+
+        String user;
+        String phone;
+
         // Get Normal Contacts
         while (phones.moveToNext()) {
-            String user = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-            String phone = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            contactarray[contactCount] = new ContactArray(user, phone);
-            ContactArraylist.add(contactarray[contactCount]);
-            Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
-            contactCount++;
+            user = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+            phone = phones.getString(phones.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            if (!checker.contains(user.toUpperCase())) {
+                checker.add(user.toUpperCase());
+                contactarray[contactCount] = new ContactArray(user, phone);
+                ContactArraylist.add(contactarray[contactCount]);
+                contactCount++;
+                //Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
+            }
         }
 
         // Get Sim Contacts
         while (cursorSim.moveToNext()) {
-            String user = cursorSim.getString(cursorSim.getColumnIndexOrThrow("name"));
-            String phone = cursorSim.getString(cursorSim.getColumnIndexOrThrow("number"));
-            Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
-            contactarray[contactCount] = new ContactArray(user, phone);
-            ContactArraylist.add(contactarray[contactCount]);
-            contactCount++;
+            user = cursorSim.getString(cursorSim.getColumnIndexOrThrow("name"));
+            phone = cursorSim.getString(cursorSim.getColumnIndexOrThrow("number"));
+            if (!checker.contains(user.toUpperCase())) {
+                checker.add(user.toUpperCase());
+                contactarray[contactCount] = new ContactArray(user, phone);
+                ContactArraylist.add(contactarray[contactCount]);
+                contactCount++;
+                //Log.d("LOGCAT", "NEW: " + user + " | phone: " + phone);
+            }
         }
 
         phones.close();
@@ -89,7 +103,7 @@ public class ContactList extends AppCompatActivity {
         setContentView(R.layout.activity_contact_list);
 
         // Getting Variable Instances
-        contactlist = (ListView) findViewById(R.id.contactlist);
+        contactlist = (RecyclerView) findViewById(R.id.contactlist);
         Title = (EditText) findViewById(R.id.Title);
         SearchBox = (EditText) findViewById(R.id.SearchBox);
         Goback = (ImageButton) findViewById(R.id.Goback);
@@ -125,9 +139,13 @@ public class ContactList extends AppCompatActivity {
         }
 
         // Load List of Contacts
+        contactViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
+        contactlist.setAdapter(new ContactAdapter(ContactArraylist, contactlist, activity));
 
-        CustomAdapter customAdapter = new CustomAdapter();
-        contactlist.setAdapter(customAdapter);
+        contactlist.setLayoutManager(new LinearLayoutManager(context));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(contactlist.getContext(),
+                ((LinearLayoutManager) contactlist.getLayoutManager()).getOrientation());
+        contactlist.addItemDecoration(dividerItemDecoration);
 
         // Filtering
         SearchBox.addTextChangedListener(new TextWatcher() {
@@ -142,122 +160,9 @@ public class ContactList extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 SearchBoxFilter = SearchBox.getText().toString();
-                CustomAdapterFilter customAdapterfilter = new CustomAdapterFilter();
-                contactlist.setAdapter(customAdapterfilter);
+
             }
         });
+
     }
-
-    class CustomAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return contactCount;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewgroup) {
-            view = getLayoutInflater().inflate(R.layout.contacts_list_item, null);
-            Button contactname = (Button) view.findViewById(R.id.contactname);
-            Button contactphone = (Button) view.findViewById(R.id.contactphone);
-            contactname.setText(contactarray[i].getName());
-            contactphone.setText(contactarray[i].getPhone());
-
-            contactname.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    numberSelected = contactarray[i].getPhone();
-                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
-
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("result",numberSelected);
-                    setResult(Activity.RESULT_OK,returnIntent);
-                    finish();
-
-                }
-            });
-
-            contactphone.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    numberSelected = contactarray[i].getPhone();
-                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
-
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("result",numberSelected);
-                    setResult(Activity.RESULT_OK,returnIntent);
-                    finish();
-                }
-            });
-
-            return view;
-        }
-    }
-
-    class CustomAdapterFilter extends BaseAdapter {
-
-        @Override
-        public int getCount() { return contactCount; }
-
-        @Override
-        public Object getItem(int position) { return null; }
-
-        @Override
-        public long getItemId(int position) { return 0; }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewgroup) {
-            view = getLayoutInflater().inflate(R.layout.contacts_list_item, null);
-            contactEntry = (LinearLayout) view.findViewById(R.id.contactEntry);
-
-            Button contactname = (Button) view.findViewById(R.id.contactname);
-            Button contactphone = (Button) view.findViewById(R.id.contactphone);
-
-            contactname.setText(contactarray[i].getNameFiltered(SearchBoxFilter));
-            contactphone.setText(contactarray[i].getPhoneFiltered(SearchBoxFilter));
-
-            if (contactarray[i].getNameFiltered(SearchBoxFilter).equals("")) {
-                contactEntry.setVisibility(View.GONE);
-            }
-
-            contactname.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    numberSelected = contactarray[i].getPhone();
-                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
-
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("result",numberSelected);
-                    setResult(Activity.RESULT_OK,returnIntent);
-                    finish();
-
-                }
-            });
-
-            contactphone.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    numberSelected = contactarray[i].getPhone();
-                    Log.d("LOGCAT", "Selected: " + contactarray[i].getPhone() + " | conversion: " + numberSelected);
-
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("result",numberSelected);
-                    setResult(Activity.RESULT_OK,returnIntent);
-                    finish();
-                }
-            });
-
-            return view;
-        }
-    }
-
 }

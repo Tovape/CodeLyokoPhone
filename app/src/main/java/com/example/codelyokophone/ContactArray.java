@@ -40,7 +40,7 @@ public class ContactArray {
     // Tostring
     @Override
     public String toString() {
-        return "Name: " + name + " | Phone: " + phone;
+        return name + "SEPARATORTVP" + phone;
     }
 
 }
