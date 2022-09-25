@@ -49,7 +49,6 @@ public class ContactList extends AppCompatActivity {
     ArrayList ContactArraylist = new ArrayList();
     ContactArray[] contactarray = new ContactArray[1000];
     private int contactCount = 0;
-    String SearchBoxFilter;
     private ContactViewModel contactViewModel;
 
     // Other
@@ -140,29 +139,11 @@ public class ContactList extends AppCompatActivity {
 
         // Load List of Contacts
         contactViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
-        contactlist.setAdapter(new ContactAdapter(ContactArraylist, contactlist, activity));
+        contactlist.setAdapter(new ContactAdapter(ContactArraylist, contactlist, activity, SearchBox));
 
         contactlist.setLayoutManager(new LinearLayoutManager(context));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(contactlist.getContext(),
                 ((LinearLayoutManager) contactlist.getLayoutManager()).getOrientation());
         contactlist.addItemDecoration(dividerItemDecoration);
-
-        // Filtering
-        SearchBox.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable SearchBox) {}
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                SearchBoxFilter = SearchBox.getText().toString();
-
-            }
-        });
-
     }
 }
