@@ -6,15 +6,9 @@ Build --> Generate APK once everything is okay
 
 In case you find any bugs let me know in the issues page
 
-When you install the app it will probably tell you it's unsafe which is not true, you can browse the source code and there's nothing malicious
+Tested on:
 
-Android 6 Compatible:
-
-Run on Samsung Galaxy Note Edge, Nexus 5 & Motorola E3
-
-Android 11 Compatible:
-
-Run on Xiaomi MI11 5G
+Samsung Galaxy Note Edge, Nexus 5, Motorola E3, Xiaomi MI11 5G and Xiaomi Redmi 8
 
 ![Screenshot_2022-05-30-19-13-15](https://user-images.githubusercontent.com/49490716/171036976-54369ab8-9348-41e3-8411-ec8bde54c6c6.jpg)
 
