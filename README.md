@@ -1,10 +1,12 @@
 # CodeLyokoPhone
-To get started install Android Studio and download the folder called "Codelyokophone"
+To get started open Android Studio and download the folder called "Codelyokophone"
 
 Check if the program works ok with your gradle configuration
-Build --> Generate APK once everything is okay
+Build --> Generate APK
 
 In case you find any bugs let me know in the issues page
+
+This apk checks your phone's battery level for the battery indicator and your network speed for the network speed indicator
 
 Tested on:
 
