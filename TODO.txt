@@ -1,1 +1,4 @@
-UPDATE DEPRECATED LIST TO NON DEPRECATED ONE
+Ability to delete last char from phone num
+Fix the Mbps count (inexact, it's not 1024)
+Add a placeholder image for the audio quality thing center right square
+Fix the searchbar, it adds weird spaces
